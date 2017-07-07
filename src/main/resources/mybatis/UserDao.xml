@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kid.springboot.dao.UserDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.kid.springboot.entity.User">
+        <result column="id" property="id"/>
+        <result column="login_name" property="login_name"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <result column="salt" property="salt"/>
+        <result column="phone" property="phone"/>
+        <result column="user_type" property="user_type"/>
+        <result column="status" property="status"/>
+        <result column="organization_id" property="organization_id"/>
+        <result column="create_time" property="create_time"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `login_name`,
+        `name`,
+        `password`,
+        `age`,
+        `sex`,
+        `salt`,
+        `phone`,
+        `user_type`,
+        `status`,
+        `organization_id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO user (
+            `id`,
+            `login_name`,
+            `name`,
+            `password`,
+            `age`,
+            `sex`,
+            `salt`,
+            `phone`,
+            `user_type`,
+            `status`,
+            `organization_id`,
+            `create_time`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.login_name},
+            #{pojo.name},
+            #{pojo.password},
+            #{pojo.age},
+            #{pojo.sex},
+            #{pojo.salt},
+            #{pojo.phone},
+            #{pojo.user_type},
+            #{pojo.status},
+            #{pojo.organization_id},
+            #{pojo.create_time}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.login_name!=null"> `login_name`,</if>
+            <if test="pojo.name!=null"> `name`,</if>
+            <if test="pojo.password!=null"> `password`,</if>
+            <if test="pojo.age!=null"> `age`,</if>
+            <if test="pojo.sex!=null"> `sex`,</if>
+            <if test="pojo.salt!=null"> `salt`,</if>
+            <if test="pojo.phone!=null"> `phone`,</if>
+            <if test="pojo.user_type!=null"> `user_type`,</if>
+            <if test="pojo.status!=null"> `status`,</if>
+            <if test="pojo.organization_id!=null"> `organization_id`,</if>
+            <if test="pojo.create_time!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.login_name!=null">#{pojo.login_name},</if>
+            <if test="pojo.name!=null">#{pojo.name},</if>
+            <if test="pojo.password!=null">#{pojo.password},</if>
+            <if test="pojo.age!=null">#{pojo.age},</if>
+            <if test="pojo.sex!=null">#{pojo.sex},</if>
+            <if test="pojo.salt!=null">#{pojo.salt},</if>
+            <if test="pojo.phone!=null">#{pojo.phone},</if>
+            <if test="pojo.user_type!=null">#{pojo.user_type},</if>
+            <if test="pojo.status!=null">#{pojo.status},</if>
+            <if test="pojo.organization_id!=null">#{pojo.organization_id},</if>
+            <if test="pojo.create_time!=null">#{pojo.create_time},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO user (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.login_name},
+            #{pojo.name},
+            #{pojo.password},
+            #{pojo.age},
+            #{pojo.sex},
+            #{pojo.salt},
+            #{pojo.phone},
+            #{pojo.user_type},
+            #{pojo.status},
+            #{pojo.organization_id},
+            #{pojo.create_time}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.login_name != null"> `login_name` = #{pojo.login_name}, </if>
+            <if test="pojo.name != null"> `name` = #{pojo.name}, </if>
+            <if test="pojo.password != null"> `password` = #{pojo.password}, </if>
+            <if test="pojo.age != null"> `age` = #{pojo.age}, </if>
+            <if test="pojo.sex != null"> `sex` = #{pojo.sex}, </if>
+            <if test="pojo.salt != null"> `salt` = #{pojo.salt}, </if>
+            <if test="pojo.phone != null"> `phone` = #{pojo.phone}, </if>
+            <if test="pojo.user_type != null"> `user_type` = #{pojo.user_type}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.organization_id != null"> `organization_id` = #{pojo.organization_id}, </if>
+            <if test="pojo.create_time != null"> `create_time` = #{pojo.create_time} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+    <select id="getUserInfo" resultType="com.kid.springboot.entity.User">
+        select * from user t
+        where name=#{name}
+    </select>
+</mapper>
+
